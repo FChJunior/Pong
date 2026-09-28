@@ -1,9 +1,9 @@
 const cacheName = "Chagas-Pong-1.0";
 const contentToCache = [
-    "Build/build.loader.js",
-    "Build/build.framework.js.br",
-    "Build/build.data.br",
-    "Build/build.wasm.br",
+    "Build/buid.loader.js",
+    "Build/buid.framework.js.br",
+    "Build/buid.data.br",
+    "Build/buid.wasm.br",
     "TemplateData/style.css"
 
 ];

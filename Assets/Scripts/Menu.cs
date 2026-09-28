@@ -26,7 +26,7 @@ public class Menu : MonoBehaviour
 
     private void SinglePlayer()
     {
-        ScoreController.instance.InPlay = true;
+        ScoreController.instance.RestartGame();
         ball.Launcher();
         ia.enabled = true;
         p2.enabled = false;
@@ -34,7 +34,7 @@ public class Menu : MonoBehaviour
     }
     private void Multiplayer()
     {
-        ScoreController.instance.InPlay = true;
+        ScoreController.instance.RestartGame();
         ball.Launcher();
         ia.enabled = false;
         p2.enabled = true;

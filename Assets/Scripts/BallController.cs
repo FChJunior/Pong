@@ -33,12 +33,14 @@ public class BallController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Goal1"))
         {
+            ScoreController.instance.ScoreP2 = 1;
             StartCoroutine(ResetPosition());
             direction.x = -1;
             return;
         }
         if (collision.gameObject.CompareTag("Goal2"))
         {
+            ScoreController.instance.ScoreP1 = 1;
             StartCoroutine(ResetPosition());
             direction.x = 1;
             return;
@@ -48,7 +50,7 @@ public class BallController : MonoBehaviour
         randomDirection.y *= body.linearVelocityY > 0 ? 1 : -1;
         Move(body.linearVelocity + randomDirection);
     }
-    
+
     private IEnumerator ResetPosition()
     {
         body.linearVelocity = Vector2.zero;

@@ -55,8 +55,11 @@ public class BallController : MonoBehaviour
     {
         body.linearVelocity = Vector2.zero;
         transform.position = Vector2.zero;
-        speed = initSpeed;
         yield return new WaitForSeconds(0.5f);
-        Launcher();
+        if (ScoreController.instance.InPlay)
+        {
+            speed = initSpeed;
+            Launcher();
+        }
     }
 }

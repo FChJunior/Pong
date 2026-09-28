@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (!ScoreController.instance.InPlay)
+        {
+            move = Vector2.zero;
+            transform.position = new Vector3(transform.position.x, 0, 0);
+            return;
+        }
         // if (p1)
         //     move = InputManager.instance.MoveP1 * speed;
         // else

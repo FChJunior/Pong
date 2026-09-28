@@ -8,7 +8,7 @@ public class ScoreController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textP2;
     [SerializeField] private TextMeshProUGUI winner;
     private bool inPlay;
-    public bool InPlay { get { return inPlay; } }
+    public bool InPlay { set { if (value) inPlay = value; } get { return inPlay; } }
     private int scoreP1;
     private int scoreP2;
     public int ScoreP1
@@ -36,7 +36,6 @@ public class ScoreController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        inPlay = true;
         RestartGame();
     }
     private void RestartGame()
@@ -55,12 +54,12 @@ public class ScoreController : MonoBehaviour
     }
     private void UpdateStateGame()
     {
-        if(scoreP1 >= goal || scoreP2 >= goal)
+        if (scoreP1 >= goal || scoreP2 >= goal)
         {
             inPlay = false;
             winner.gameObject.SetActive(true);
             winner.text = scoreP1 >= goal
-                                         ? "O Jogador 1 Venceu!!!" 
+                                         ? "O Jogador 1 Venceu!!!"
                                          : "O Jogador 2 Venceu!!!";
         }
     }

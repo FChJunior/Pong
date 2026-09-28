@@ -16,9 +16,8 @@ public class BallController : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         speed = initSpeed;
-        Launcher();
     }
-    private void Launcher()
+    public void Launcher()
     {
         if (direction.x == 0) direction.x = Random.value > 0.5f ? 1f : -1f;
         direction.y = Random.Range(-1f, 1f);

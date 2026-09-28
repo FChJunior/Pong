@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
@@ -11,6 +12,12 @@ public class BallController : MonoBehaviour
     private Vector2 direction;
     [SerializeField]
     private Vector2 randomDirection;
+    [SerializeField]
+    private ParticleSystem particles;
+    [SerializeField]
+    private TrailRenderer trail;
+    [SerializeField]
+    private Animator camShake;
 
     void Start()
     {
@@ -52,9 +59,14 @@ public class BallController : MonoBehaviour
 
     private IEnumerator ResetPosition()
     {
+        particles.Play();
+        trail.emitting = false;
+        camShake.SetTrigger("Shake");
         body.linearVelocity = Vector2.zero;
+        yield return new WaitForSeconds(0.8f);
         transform.position = Vector2.zero;
         yield return new WaitForSeconds(0.5f);
+        trail.emitting = true;
         if (ScoreController.instance.InPlay)
         {
             speed = initSpeed;

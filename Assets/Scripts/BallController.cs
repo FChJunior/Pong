@@ -18,6 +18,8 @@ public class BallController : MonoBehaviour
     private TrailRenderer trail;
     [SerializeField]
     private Animator camShake;
+    [SerializeField]
+    private AudioSource[] audio;
 
     void Start()
     {
@@ -51,6 +53,8 @@ public class BallController : MonoBehaviour
             direction.x = 1;
             return;
         }
+
+        audio[0].Play();
         speed += addSpeed;
         randomDirection.x *= body.linearVelocityX > 0 ? 1 : -1;
         randomDirection.y *= body.linearVelocityY > 0 ? 1 : -1;
@@ -60,6 +64,7 @@ public class BallController : MonoBehaviour
     private IEnumerator ResetPosition()
     {
         particles.Play();
+        audio[1].Play();
         trail.emitting = false;
         camShake.SetTrigger("Shake");
         body.linearVelocity = Vector2.zero;
